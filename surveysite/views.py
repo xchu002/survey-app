@@ -11,6 +11,10 @@ import datetime
 from django.utils import timezone
 import schedule
 
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
 # Create your views here.
 
 def delete():
