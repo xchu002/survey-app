@@ -19,4 +19,19 @@
 </form>
 <p>{{session}}</p>
 
+<p style="font-weight: bold;">Instructions for usage:</p>
+<p>This web app creates questionnaires and analyses which words are used most in the responses received.</p>
+<p>Enter the session code in the form above to answer a questionnaire.</p>
+<p>To create a survey, register using password and email. Login to create a survey session. A session code will be given and </p>
+<p>respondents can use the code to access your survey question.</p>
+
+<p>Limitations of the current version:</p>
+<ol>
+    <li>Expiry date seems to not work, and is in UTC time zone only.</li>
+    <li>Only 999,999 sessions can exist at one point in time. </li>
+    <li>No email verification if password is lost.</li>
+
+</ol>
 {% endblock %}
+
+

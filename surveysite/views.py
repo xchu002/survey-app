@@ -94,7 +94,7 @@ def create(request, session_id):
         if create_form.is_valid():
             question = create_form.cleaned_data["question"]
             print(f"session id 2: {session_id}")
-            survey = models.Survey(unique_id=session_id,user=request.user,survey_question=question,expiry_date=timezone.now() + datetime.timedelta(days=1))
+            survey = models.Survey(unique_id=session_id,user=request.user,survey_question=question,expiry_date=timezone.now() + datetime.timedelta(days=365))
             survey.save()
             return HttpResponseRedirect(reverse('index'))
 
@@ -177,6 +177,7 @@ def response(request, session):
 def analytics(request, session):
     lemmatizer = WordNetLemmatizer()
     survey = models.Survey.objects.get(unique_id=session)
+    expiry_date = survey.expiry_date
     question = survey.survey_question
     answers = survey.answers.all()
     word_list_unprocessed = []
@@ -200,7 +201,8 @@ def analytics(request, session):
         "session": session,
         "question": question,
         "answers": answers,
-        "dictionary": analysis_dict
+        "dictionary": analysis_dict,
+        "expiry": expiry_date
     })
 
 def register(request):

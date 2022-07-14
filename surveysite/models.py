@@ -15,7 +15,7 @@ class Survey(models.Model):
         ordering = ('unique_id',)
 
     def __str__(self):
-        return f"id: {self.unique_id}, {self.user}, {self.survey_question}"
+        return f"id: {self.unique_id}, {self.user}, {self.survey_question}, {self.expiry_date}"
 
 class Response(models.Model):
     question = models.ForeignKey(Survey, on_delete=models.CASCADE, null=True, related_name="answers")
