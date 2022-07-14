@@ -1,0 +1,13 @@
+{% extends 'surveysite/layout.html' %}
+
+{% block body %}
+<h1>Session ID: {{session}}</h1>
+<h2>Question: {{question}}</h2>
+<form action="{% url 'response' session %}" method="post">
+    {% csrf_token %}
+    {{response_form}}
+    <input type="submit" name="submit">
+    <input type="submit" name="cancel" value="Cancel">
+</form>
+<p>{{response}}</p>
+{% endblock %}

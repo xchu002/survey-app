@@ -1,0 +1,31 @@
+{% extends 'surveysite/layout.html' %}
+
+{% block body %}
+<form action="{% url 'index' %}">
+    <button>Back</button>
+</form>
+<h1>Your Analytics</h1>
+<h2>Session ID: {{session}}</h2>
+<h2>Survey: {{question}}</h2>
+
+<h2>Word percentages:</h2>
+<table class="table">
+    <tr>
+        <th>Word</th>
+        <th>Percentage</th>
+    </tr>
+    {% for key, value in dictionary.items %}
+    <tr>
+        <td>{{key}}</td>
+        <td>{{value}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Answers: </h2>
+<ul>
+    {% for answer in answers %}
+    <li>{{answer.answer}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "surveysite/layout.html" %}
+
+{% block body %}
+<h1>Login</h1>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{login_form}}
+    <input type="submit">
+</form>
+<h2>{{invalid}}</h2>
+
+<p>Not registered yet? Register here: <form action="{% url 'register' %}"><button>Register</button></form></p>
+
+<h1>Find a Session</h1>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{session_form}}
+    <input type="submit">
+</form>
+<p>{{session}}</p>
+
+{% endblock %}

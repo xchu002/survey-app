@@ -1,0 +1,12 @@
+{% extends 'surveysite/layout.html' %}
+{% load static %}
+
+{% block body %}
+<h1>Register Here</h1>
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit">
+</form>
+{{invalid}}
+{% endblock %}

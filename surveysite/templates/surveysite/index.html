@@ -1,0 +1,28 @@
+{% extends "surveysite/layout.html" %}
+
+{% block body %}
+<h1>Home</h1>
+<h2>Welcome, {{name}}</h2>
+<form action="{% url 'logout'%}">
+    {% csrf_token %}
+    <button>Logout</button>
+</form>
+<h2>Create session</h2>
+
+<form action="{% url 'create' session_id%}">
+    <button>Create</button>
+</form>
+{{warning_sign}}
+<h2>Your Sessions</h2>
+{% for survey in surveys %}
+    <ul>
+        {% if survey.unique_id %}
+        <li><a href="{% url 'analytics' survey.unique_id %}">id: {{survey.unique_id}}, {{survey.survey_question}}</a></li>
+        {% endif %}
+    </ul>  
+{% endfor %}
+
+
+
+
+{% endblock %}
