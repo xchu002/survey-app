@@ -17,12 +17,14 @@ nltk.download('omw-1.4')
 
 # Create your views here.
 
+
 def delete():
     for survey in models.Survey.objects.all():
-        if survey.expiry_date < timezone.now():
-            survey.delete()
+        if type(survey.expiry_date) == type(timezone.now()):
+            if survey.expiry_date < timezone.now():
+                survey.delete()
+delete()
 
-schedule.every(1).minutes.do(delete)
 
 
 def create_number(user):
